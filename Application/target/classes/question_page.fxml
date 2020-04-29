@@ -3,11 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.utcn.presentation.QuestionPage">
    <children>
-      <Button fx:id="yesButton" layoutX="343.0" layoutY="242.0" mnemonicParsing="false" text="Yes" onAction="#onYesButtonClicked"/>
+      <Button fx:id="yesButton" layoutX="343.0" layoutY="242.0" mnemonicParsing="false" onAction="#onYesButtonClicked" text="Yes" />
       <Label fx:id="questionLabel" layoutX="377.0" layoutY="134.0" text="question" />
-      <Button fx:id="noButton" layoutX="424.0" layoutY="242.0" mnemonicParsing="false" text="No" onAction="#onNoButtonClicked"/>
+      <Button fx:id="noButton" layoutX="424.0" layoutY="242.0" mnemonicParsing="false" onAction="#onNoButtonClicked" text="No" />
+      <Label fx:id="questionNumberLabel" layoutX="14.0" layoutY="14.0" text="Label" />
    </children>
 </AnchorPane>
