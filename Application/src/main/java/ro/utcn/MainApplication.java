@@ -8,12 +8,10 @@ import javafx.stage.Stage;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
-public class MainApplication extends Application
-{
+public class MainApplication extends Application {
     public static Stage mainStage;
 
-    public void start(Stage stage) throws Exception
-    {
+    public void start(Stage stage) throws Exception {
         mainStage = stage;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/home_page.fxml"));
