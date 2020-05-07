@@ -17,9 +17,10 @@ public class Game
     private Game()
     {
         filters = new ArrayList<>();
+        filters.add(new Filter("rdf:type", "dbo:Person"));
         filters.add(new Filter("foaf:gender", "\"female\"@en"));
-        filters.add(new Filter("dbp:hero", "\"y\"^^rdf:langString"));
-        filters.add(new Filter("dbp:hero", "y"));
+        filters.add(new Filter("dct:subject", "dbc:Marvel_Comics_characters_who_use_magic"));
+        filters.add(new Filter("asta e de umplutura", "ca sa nu puste"));
 
         currentQuestionNumber = 0;
         currentFilter = filters.get(currentQuestionNumber);

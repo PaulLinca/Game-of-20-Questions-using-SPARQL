@@ -12,6 +12,8 @@ public class SparqlQuery
     private final String queryBeginning =
             "PREFIX dbo: <http://dbpedia.org/ontology/>\n" +
                     "PREFIX dbr: <http://dbpedia.org/resource/>\n" +
+                    "PREFIX dct: <http://purl.org/dc/terms/>\n" +
+                    "PREFIX dbc: <http://dbpedia.org/resource/Category:>\n" +
                     "PREFIX dbp: <http://dbpedia.org/property/>\n" +
                     "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
                     "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
@@ -59,5 +61,6 @@ public class SparqlQuery
         while (queryResult.hasNext()) {
             System.out.println(queryResult.next().get("characterName").toString());
         }
+        System.out.println("-----------------------------------------------");
     }
 }
