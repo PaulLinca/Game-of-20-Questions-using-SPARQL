@@ -1,14 +1,29 @@
 package ro.utcn.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game
 {
     public static Game instance = null;
 
-    public String currentQuestion = "Is your character a female?";
-    public int currentQuestionNumber = 1;
+    List<Filter> filters;
+
+    public SparqlQuery characterQuery = new SparqlQuery();
+    public Filter currentFilter;
+    public String currentQuestion;
+    public int currentQuestionNumber;
 
     private Game()
     {
+        filters = new ArrayList<>();
+        filters.add(new Filter("foaf:gender", "\"female\"@en"));
+        filters.add(new Filter("dbp:hero", "\"y\"^^rdf:langString"));
+        filters.add(new Filter("dbp:hero", "y"));
+
+        currentQuestionNumber = 0;
+        currentFilter = filters.get(currentQuestionNumber);
+        currentQuestion = currentFilter.value + "?";
     }
 
     public static Game getInstance()
@@ -21,9 +36,20 @@ public class Game
         return instance;
     }
 
-    public void generateNextQuestion()
+    public void generateNextQuestion(boolean answer)
     {
+        if(answer)
+        {
+            characterQuery.addFilter(currentFilter.positiveFilter());
+        }
+        else
+        {
+            characterQuery.addFilter(currentFilter.negativeFilter());
+        }
+        characterQuery.displayQueryResult();
+
         currentQuestionNumber++;
-        currentQuestion = "A " + currentQuestionNumber + "a intrebare";
+        currentFilter = filters.get(currentQuestionNumber);
+        currentQuestion = currentFilter.value + "?";
     }
 }

@@ -31,16 +31,16 @@ public class QuestionPage
     public void onYesButtonClicked(ActionEvent actionEvent)
     {
         System.out.println("Yes");
-        //TODO: Interpreteaza raspunsul
-        Game.getInstance().generateNextQuestion();
+
+        Game.getInstance().generateNextQuestion(true);
         goToNextQuestion();
     }
 
     public void onNoButtonClicked(ActionEvent actionEvent)
     {
         System.out.println("No");
-        //TODO: Interpreteaza raspunsul
-        Game.getInstance().generateNextQuestion();
+
+        Game.getInstance().generateNextQuestion(false);
         goToNextQuestion();
     }
 

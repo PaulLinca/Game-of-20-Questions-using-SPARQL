@@ -33,7 +33,6 @@ public class SceneController
         catch (IOException e)
         {
             System.out.println("Error while changing scenes.");
-
             e.printStackTrace();
         }
     }
