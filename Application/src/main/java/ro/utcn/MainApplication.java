@@ -17,7 +17,7 @@ public class MainApplication extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/home_page.fxml"));
         Parent root = loader.load();
         mainStage.setTitle("20 Questions");
-        mainStage.setScene(new Scene(root, 800, 600));
+        mainStage.setScene(new Scene(root, 790, 590));
         mainStage.setResizable(false);
         mainStage.show();
 

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.utcn.presentation.HomePage">
+<AnchorPane prefHeight="590.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.utcn.presentation.HomePage">
    <children>
-      <Button fx:id="startButton" layoutX="380.0" layoutY="288.0" mnemonicParsing="false" text="Start" onAction="#onStartButtonClicked"/>
-      <Label layoutX="365.0" layoutY="226.0" text="20 Questions" />
+      <ImageView fitHeight="600.0" fitWidth="800.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@homepage.png" />
+         </image></ImageView>
+      <Button fx:id="startButton" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#onStartButtonClicked" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="300.0" />
    </children>
 </AnchorPane>
