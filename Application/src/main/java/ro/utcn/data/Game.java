@@ -6,8 +6,8 @@ public class Game
 {
     public static Game instance = null;
 
+    List<String> possibleCharacters;
     List<Filter> filters;
-
     public SparqlQuery characterQuery = new SparqlQuery();
     public Filter currentFilter;
     public String currentQuestion;
@@ -46,6 +46,29 @@ public class Game
         return instance;
     }
 
+    private boolean checkGameFinished()
+    {
+        if(possibleCharacters.size() == 0)
+        {
+            defeated();
+            return true;
+        }
+
+        if(possibleCharacters.size() == 1)
+        {
+            guess();
+            return true;
+        }
+
+        if(currentQuestionNumber == 20)
+        {
+            guess();
+            return true;
+        }
+
+        return false;
+    }
+
     private void updateGameParameters()
     {
         questionListIterator++;
@@ -67,14 +90,15 @@ public class Game
 
     private void findNextQuestion()
     {
-        List<String> queryResultPages = characterQuery.getQueryResultPages();
         while(true)
         {
+            possibleCharacters= characterQuery.getQueryResultPages();
+
             boolean isNextQuestionApplicable = false;
             int listIterator = 0;
-            while(!isNextQuestionApplicable && listIterator < queryResultPages.size())
+            while(!isNextQuestionApplicable && listIterator < possibleCharacters.size())
             {
-                isNextQuestionApplicable = SparqlQuery.executeBooleanQuery(queryResultPages.get(listIterator), currentFilter.attribute, currentFilter.value);
+                isNextQuestionApplicable = SparqlQuery.executeBooleanQuery(possibleCharacters.get(listIterator), currentFilter.attribute, currentFilter.value);
                 listIterator++;
             }
 
@@ -84,6 +108,7 @@ public class Game
             }
             else
             {
+                guess();
                 break;
             }
         }
@@ -92,9 +117,19 @@ public class Game
     public void generateNextQuestion(boolean answer)
     {
         addFilterToQuery(answer);
-        characterQuery.displayQueryResult();
         currentQuestionNumber++;
         updateGameParameters();
         findNextQuestion();
+    }
+
+    private void guess()
+    {
+        System.out.println("This is a guess");
+        System.out.println(possibleCharacters.get(0));
+    }
+
+    private void defeated()
+    {
+        System.out.println("I couldn't guess your character :((((((");
     }
 }
