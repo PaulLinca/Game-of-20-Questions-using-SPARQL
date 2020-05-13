@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import ro.utcn.data.SparqlQuery;
 import ro.utcn.presentation.util.SceneController;
 
 public class HomePage

@@ -24,8 +24,8 @@ public class QuestionPage
     @FXML
     public void initialize()
     {
+        questionNumberLabel.setText(String.valueOf("Question " + questionNumber));
         questionLabel.setText(question);
-        questionNumberLabel.setText(String.valueOf(questionNumber));
     }
 
     public void onYesButtonClicked(ActionEvent actionEvent)

@@ -7,7 +7,8 @@ import org.apache.jena.query.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SparqlQuery {
+public class SparqlQuery
+{
     private final String queryBeginning =
             "PREFIX dbo: <http://dbpedia.org/ontology/>\n" +
                     "PREFIX dbr: <http://dbpedia.org/resource/>\n" +
@@ -27,32 +28,52 @@ public class SparqlQuery {
                     "}LIMIT 100\n";
     private List<String> filters = new ArrayList<>();
 
-    public SparqlQuery() {
+    public SparqlQuery()
+    {
     }
 
-    public void addFilter(String filter) {
+    public void addFilter(String filter)
+    {
         filters.add(filter);
     }
 
-    private String buildQuery() {
+    private String buildQuery()
+    {
         String allFilters = "";
-        for (String filter : filters) {
+        for (String filter : filters)
+        {
             allFilters += filter;
         }
         return queryBeginning + allFilters + queryEnd;
     }
 
-    public ResultSet executeQuery() {
+    public ResultSet executeQuery()
+    {
         String queryToExecute = buildQuery();
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", queryToExecute);
         return queryExecution.execSelect();
     }
 
-    public void displayQueryResult() {
+    public void displayQueryResult()
+    {
         ResultSet queryResult = executeQuery();
         System.out.println("Possible results so far: ");
-        while (queryResult.hasNext()) {
+        while (queryResult.hasNext())
+        {
             System.out.println(queryResult.next().get("characterName").toString());
         }
+    }
+
+    public static boolean executeBooleanQuery(String pageName, String attribute, String value)
+    {
+        String booleanQuery =
+                "PREFIX dbo: <http://dbpedia.org/ontology/>\n" +
+                        "PREFIX dbr: <http://dbpedia.org/resource/>\n" +
+                        "PREFIX dbp: <http://dbpedia.org/property/>\n" +
+                        "ask where {dbr:%s %s %s}\n" ;
+        booleanQuery = String.format(booleanQuery, pageName, attribute, value);
+        QueryExecution queryExecution = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", booleanQuery);
+
+        return queryExecution.execAsk();
     }
 }
