@@ -19,7 +19,7 @@ public class SparqlQuery
                     "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
                     "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
                     "PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n" +
-                    "SELECT DISTINCT (STR(?characterLabel) as ?characterName)\n" +
+                    "SELECT DISTINCT (STR(?characterLabel) as ?characterName) ?character\n" +
                     "WHERE {\n" +
                     "     ?character rdfs:label ?characterLabel.\n" +
                     "     ?character rdf:type dbo:ComicsCharacter.\n";
@@ -64,13 +64,32 @@ public class SparqlQuery
         }
     }
 
+    public List<String> getQueryResultPages()
+    {
+        List<String> pages = new ArrayList<>();
+
+        ResultSet queryResult = executeQuery();
+        while (queryResult.hasNext())
+        {
+            pages.add(queryResult.next().get("character").toString());
+        }
+
+        return pages;
+    }
+
     public static boolean executeBooleanQuery(String pageName, String attribute, String value)
     {
         String booleanQuery =
                 "PREFIX dbo: <http://dbpedia.org/ontology/>\n" +
                         "PREFIX dbr: <http://dbpedia.org/resource/>\n" +
+                        "PREFIX dct: <http://purl.org/dc/terms/>\n" +
+                        "PREFIX dbc: <http://dbpedia.org/resource/Category:>\n" +
                         "PREFIX dbp: <http://dbpedia.org/property/>\n" +
-                        "ask where {dbr:%s %s %s}\n" ;
+                        "PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+                        "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+                        "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
+                        "PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>\n" +
+                        "ask where {<%s> %s %s}\n" ;
         booleanQuery = String.format(booleanQuery, pageName, attribute, value);
         QueryExecution queryExecution = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", booleanQuery);
 
