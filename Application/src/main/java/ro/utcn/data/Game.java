@@ -17,6 +17,7 @@ public class Game
     private Game()
     {
         filters = new ArrayList<>();
+
         filters.add(new Filter("rdf:type", "dbo:Person"));
         questionsMap.put(0, "a person");
         filters.add(new Filter("dbo:ground", "dbr:Camp_Nou"));
@@ -35,7 +36,8 @@ public class Game
 
     public static Game getInstance()
     {
-        if (instance == null) {
+        if (instance == null)
+        {
             instance = new Game();
         }
 
