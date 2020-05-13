@@ -9,7 +9,8 @@
       <ImageView fitHeight="600.0" fitWidth="800.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@homepage.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <Button fx:id="startButton" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#onStartButtonClicked" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="300.0" />
    </children>
 </AnchorPane>
