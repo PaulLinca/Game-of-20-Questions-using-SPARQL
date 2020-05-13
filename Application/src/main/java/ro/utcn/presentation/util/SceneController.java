@@ -1,6 +1,7 @@
 package ro.utcn.presentation.util;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import ro.utcn.MainApplication;
 
@@ -28,7 +29,9 @@ public class SceneController
     {
         try
         {
-            MainApplication.mainStage.setScene(new Scene(FXMLLoader.load(getClass().getResource( fxml ))));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Parent root = loader.load();
+            MainApplication.mainStage.setScene(new Scene(root, 790, 590));
         }
         catch (IOException e)
         {
