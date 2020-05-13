@@ -12,6 +12,7 @@ public class Game
     public Filter currentFilter;
     public String currentQuestion;
     public int currentQuestionNumber;
+    public int questionListIterator;
     public Map<Integer, String> questionsMap = new HashMap<>();
 
     private Game()
@@ -29,9 +30,10 @@ public class Game
         filters.add(new Filter("next question", "next question"));
         questionsMap.put(4, "next question");
 
-        currentQuestionNumber = 0;
-        currentFilter = filters.get(currentQuestionNumber);
-        currentQuestion = "Is your character " + questionsMap.get(currentQuestionNumber) + " ?";
+        currentQuestionNumber = 1;
+        questionListIterator = 0;
+        currentFilter = filters.get(questionListIterator);
+        currentQuestion = "Is your character " + questionsMap.get(questionListIterator) + " ?";
     }
 
     public static Game getInstance()
@@ -46,9 +48,9 @@ public class Game
 
     private void updateGameParameters()
     {
-        currentQuestionNumber++;
-        currentFilter = filters.get(currentQuestionNumber);
-        currentQuestion = "Is your character " + questionsMap.get(currentQuestionNumber) + " ?";
+        questionListIterator++;
+        currentFilter = filters.get(questionListIterator);
+        currentQuestion = "Is your character " + questionsMap.get(questionListIterator) + " ?";
     }
 
     private void addFilterToQuery(boolean isPositive)
@@ -91,6 +93,7 @@ public class Game
     {
         addFilterToQuery(answer);
         characterQuery.displayQueryResult();
+        currentQuestionNumber++;
         updateGameParameters();
         findNextQuestion();
     }
