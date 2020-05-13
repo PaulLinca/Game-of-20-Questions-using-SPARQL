@@ -2,8 +2,10 @@ package ro.utcn.presentation;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import ro.utcn.data.Game;
 import ro.utcn.presentation.util.SceneController;
 
@@ -26,6 +28,11 @@ public class QuestionPage
     {
         questionNumberLabel.setText(String.valueOf("Question " + questionNumber));
         questionLabel.setText(question);
+
+        yesButton.setGraphic(new ImageView("yes_button.png"));
+        yesButton.setPadding(Insets.EMPTY);
+        noButton.setGraphic(new ImageView("no_button.png"));
+        noButton.setPadding(Insets.EMPTY);
     }
 
     public void onYesButtonClicked(ActionEvent actionEvent)

@@ -4,17 +4,16 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.utcn.presentation.QuestionPage">
+<AnchorPane prefHeight="590.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.utcn.presentation.QuestionPage">
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
             <Image url="@question_page.png" />
          </image>
       </ImageView>
-      <Button fx:id="yesButton" layoutX="343.0" layoutY="242.0" mnemonicParsing="false" onAction="#onYesButtonClicked" text="Yes" />
+      <Button fx:id="yesButton" layoutX="264.0" layoutY="242.0" mnemonicParsing="false" onAction="#onYesButtonClicked" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="520.0" AnchorPane.topAnchor="350.0" />
       <Label fx:id="questionLabel" layoutX="377.0" layoutY="134.0" text="question" />
-      <Button fx:id="noButton" layoutX="424.0" layoutY="242.0" mnemonicParsing="false" onAction="#onNoButtonClicked" text="No" />
+      <Button fx:id="noButton" layoutX="518.0" layoutY="242.0" mnemonicParsing="false" onAction="#onNoButtonClicked" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="350.0" />
       <Label fx:id="questionNumberLabel" layoutX="386.0" layoutY="117.0" text="Label" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
