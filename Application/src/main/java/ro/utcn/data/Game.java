@@ -15,20 +15,29 @@ public class Game
     public int questionListIterator;
     public Map<Integer, String> questionsMap = new HashMap<>();
 
+    private int indexInMap =-1;
     private Game()
     {
         filters = new ArrayList<>();
 
         filters.add(new Filter("rdf:type", "dbo:Person"));
-        questionsMap.put(0, "a person");
-        filters.add(new Filter("dbo:ground", "dbr:Camp_Nou"));
-        questionsMap.put(1, " camp nou");
+        questionsMap.put(++indexInMap, "a person");
         filters.add(new Filter("foaf:gender", "\"female\"@en"));
-        questionsMap.put(2, "a female");
+        questionsMap.put(++indexInMap, "a female");
+        filters.add(new Filter("dbp:publisher", "dbr:Marvel_Comics"));
+        questionsMap.put(++indexInMap, "published by Marvel");
+        filters.add(new Filter("dct:subject", "dbc:S.H.I.E.L.D._agents"));
+        questionsMap.put(++indexInMap, "a S.H.I.E.L.D agent");
+        filters.add(new Filter(" dbp:homeworld", "dbr:Earth"));
+        questionsMap.put(++indexInMap, " living on Earth");
         filters.add(new Filter("dct:subject", "dbc:Marvel_Comics_characters_who_use_magic"));
-        questionsMap.put(3, "a magic user");
+        questionsMap.put(++indexInMap, "a magic user");
+        filters.add(new Filter("dbp:publisher", "dbr:DC_Comics"));
+        questionsMap.put(++indexInMap, "published by DC Comics");
+        filters.add(new Filter("dbp:alliances", "dbr:Justice_League"));
+        questionsMap.put(++indexInMap, "a member of the Justice League");
         filters.add(new Filter("next question", "next question"));
-        questionsMap.put(4, "next question");
+        questionsMap.put(++indexInMap, "next question");
 
         currentQuestionNumber = 1;
         questionListIterator = 0;

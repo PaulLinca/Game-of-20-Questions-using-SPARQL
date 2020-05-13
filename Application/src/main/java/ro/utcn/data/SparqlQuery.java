@@ -25,7 +25,7 @@ public class SparqlQuery
                     "     ?character rdf:type dbo:ComicsCharacter.\n";
     private final String queryEnd =
             "     FILTER (LANG(?characterLabel) = \"en\")\n" +
-                    "}LIMIT 100\n";
+                    "}\n";
     private List<String> filters = new ArrayList<>();
 
     public SparqlQuery()
@@ -62,6 +62,7 @@ public class SparqlQuery
         {
             System.out.println(queryResult.next().get("characterName").toString());
         }
+        System.out.println("--------------------------------------------");
     }
 
     public List<String> getQueryResultPages()
