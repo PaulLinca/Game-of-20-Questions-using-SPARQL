@@ -13,13 +13,13 @@
          </image>
       </ImageView>
       <Button fx:id="yesButton" layoutX="264.0" layoutY="242.0" mnemonicParsing="false" onAction="#onYesButtonClicked" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="520.0" AnchorPane.topAnchor="350.0" />
-      <Label fx:id="questionLabel" layoutX="339.0" layoutY="225.0" text="question" textFill="#2d2d2d">
+      <Label fx:id="questionLabel" alignment="CENTER" layoutX="339.0" layoutY="225.0" maxWidth="1.7976931348623157E308" text="question" textFill="#2d2d2d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Label>
       <Button fx:id="noButton" layoutX="518.0" layoutY="242.0" mnemonicParsing="false" onAction="#onNoButtonClicked" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="350.0" />
-      <Label fx:id="questionNumberLabel" layoutX="378.0" layoutY="56.0" text="Label" textFill="#2d2d2d">
+      <Label fx:id="questionNumberLabel" alignment="CENTER" layoutX="378.0" layoutY="56.0" maxWidth="1.7976931348623157E308" text="Label" textFill="#2d2d2d" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
