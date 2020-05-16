@@ -18,9 +18,9 @@ public class Game
 
     public String finalGuess = "";
 
-    private int indexInMap =-1;
     private Game()
     {
+        int indexInMap = -1;
         filters = new ArrayList<>();
 
         filters.add(new Filter("rdf:type", "dbo:Person"));
@@ -39,8 +39,6 @@ public class Game
         questionsMap.put(++indexInMap, "published by DC Comics");
         filters.add(new Filter("dbp:alliances", "dbr:Justice_League"));
         questionsMap.put(++indexInMap, "a member of the Justice League");
-//        filters.add(new Filter("next question", "next question"));
-//        questionsMap.put(++indexInMap, "next question");
 
         currentQuestionNumber = 1;
         questionListIterator = 0;
