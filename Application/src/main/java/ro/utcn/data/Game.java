@@ -14,6 +14,9 @@ public class Game
     public int currentQuestionNumber;
     public int questionListIterator;
     public Map<Integer, String> questionsMap = new HashMap<>();
+    public boolean isGameFinished = false;
+
+    public String finalGuess = "";
 
     private int indexInMap =-1;
     private Game()
@@ -29,15 +32,15 @@ public class Game
         filters.add(new Filter("dct:subject", "dbc:S.H.I.E.L.D._agents"));
         questionsMap.put(++indexInMap, "a S.H.I.E.L.D agent");
         filters.add(new Filter(" dbp:homeworld", "dbr:Earth"));
-        questionsMap.put(++indexInMap, " living on Earth");
+        questionsMap.put(++indexInMap, "living on Earth");
         filters.add(new Filter("dct:subject", "dbc:Marvel_Comics_characters_who_use_magic"));
         questionsMap.put(++indexInMap, "a magic user");
         filters.add(new Filter("dbp:publisher", "dbr:DC_Comics"));
         questionsMap.put(++indexInMap, "published by DC Comics");
         filters.add(new Filter("dbp:alliances", "dbr:Justice_League"));
         questionsMap.put(++indexInMap, "a member of the Justice League");
-        filters.add(new Filter("next question", "next question"));
-        questionsMap.put(++indexInMap, "next question");
+//        filters.add(new Filter("next question", "next question"));
+//        questionsMap.put(++indexInMap, "next question");
 
         currentQuestionNumber = 1;
         questionListIterator = 0;
@@ -55,34 +58,50 @@ public class Game
         return instance;
     }
 
-    private boolean checkGameFinished()
+    private void checkGameFinished()
     {
+        if(isGameFinished)
+        {
+            return;
+        }
+
         if(possibleCharacters.size() == 0)
         {
-            defeated();
-            return true;
+            guess();
+            isGameFinished =  true;
         }
 
         if(possibleCharacters.size() == 1)
         {
             guess();
-            return true;
+            isGameFinished = true;
         }
 
         if(currentQuestionNumber == 20)
         {
             guess();
-            return true;
+            isGameFinished =  true;
         }
 
-        return false;
+        if(questionListIterator >= filters.size())
+        {
+            guess();
+            isGameFinished =  true;
+        }
     }
 
     private void updateGameParameters()
     {
         questionListIterator++;
-        currentFilter = filters.get(questionListIterator);
-        currentQuestion = "Is your character " + questionsMap.get(questionListIterator) + " ?";
+        if(questionListIterator < filters.size())
+        {
+            currentFilter = filters.get(questionListIterator);
+            currentQuestion = "Is your character " + questionsMap.get(questionListIterator) + "?";
+        }
+        else
+        {
+            checkGameFinished();
+        }
     }
 
     private void addFilterToQuery(boolean isPositive)
@@ -99,7 +118,7 @@ public class Game
 
     private void findNextQuestion()
     {
-        while(true)
+        while(!isGameFinished)
         {
             possibleCharacters= characterQuery.getQueryResultPages();
 
@@ -117,7 +136,7 @@ public class Game
             }
             else
             {
-                guess();
+                checkGameFinished();
                 break;
             }
         }
@@ -133,12 +152,14 @@ public class Game
 
     private void guess()
     {
-        System.out.println("This is a guess");
-        System.out.println(possibleCharacters.get(0));
-    }
-
-    private void defeated()
-    {
-        System.out.println("I couldn't guess your character :((((((");
+        if(possibleCharacters.size() == 0)
+        {
+            finalGuess = "I COULDN'T GUESS YOUR CHARACTER :(((((";
+        }
+        else
+        {
+            finalGuess = possibleCharacters.get(0);
+        }
+        System.out.println(finalGuess);
     }
 }

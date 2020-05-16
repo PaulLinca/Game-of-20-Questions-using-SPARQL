@@ -53,6 +53,13 @@ public class QuestionPage
 
     public void goToNextQuestion()
     {
-        SceneController.getInstance().changeScene("/question_page.fxml");
+        if(Game.getInstance().isGameFinished)
+        {
+            SceneController.getInstance().changeScene("/game_over_page.fxml");
+        }
+        else
+        {
+            SceneController.getInstance().changeScene("/question_page.fxml");
+        }
     }
 }
