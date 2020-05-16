@@ -24,5 +24,6 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
+      <ProgressIndicator fx:id="loadingIndicator" layoutX="387.0" layoutY="531.0" visible="false" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>
