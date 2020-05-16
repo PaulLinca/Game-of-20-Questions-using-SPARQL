@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.utcn.presentation.GameOverPage">
+<AnchorPane prefHeight="590.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ro.utcn.presentation.GameOverPage">
    <children>
-      <Label fx:id="infoLabel" layoutX="286.0" layoutY="183.0" text="Label" />
+      <ImageView fitHeight="600.0" fitWidth="800.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@game_over_page.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="infoLabel" alignment="CENTER" layoutY="265.0" maxWidth="1.7976931348623157E308" text="info" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="Arial" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="guessLabel" alignment="CENTER" layoutX="7.0" layoutY="308.0" maxWidth="1.7976931348623157E308" text="guess" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="-7.0">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="homeButton" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="300.0" layoutY="526.0" mnemonicParsing="false" onAction="#onHomeButtonClicked" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="526.0" />
    </children>
 </AnchorPane>

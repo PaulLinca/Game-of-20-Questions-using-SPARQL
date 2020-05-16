@@ -162,4 +162,9 @@ public class Game
         }
         System.out.println(finalGuess);
     }
+
+    public static void reset()
+    {
+        instance = new Game();
+    }
 }
